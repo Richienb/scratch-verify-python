@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-	name = "scratch-verify-python",
+	name = "scratch-verify",
 	version = "1.0.0",
 	description = "Verify the ownership of a Scratch account.",
 	url = "https://github.com/Richienb/scratch-verify-python",
