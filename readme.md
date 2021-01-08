@@ -65,3 +65,7 @@ from scratch_verify import verify_code
 print(verify_code("RichieNB", "435543"))
 #=> True
 ```
+
+## Related
+
+- [scratch-verify](https://github.com/Richienb/scratch-verify) - JavaScript version.
