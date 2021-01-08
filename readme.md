@@ -2,7 +2,7 @@
 
 Verify the ownership of a Scratch account.
 
-![PyPI Badge](https://img.shields.io/pypi/v/scratch-verify)
+[![PyPI Badge](https://img.shields.io/pypi/v/scratch-verify)](https://pypi.org/project/scratch-verify)
 
 ## Install
 
