@@ -1,4 +1,4 @@
-import random
+import secrets
 import string
 from time import time as now
 import requests
@@ -13,7 +13,7 @@ def create_code() -> str:
 		A 6-digit number.
 	"""
 
-	return "".join(random.SystemRandom().choices(string.digits, k=6))
+	return "".join(secrets.choice(string.digits) for _ in range(6))
 
 def verify_code(username: str, code: str, completion_timeout: int = float("inf")) -> bool:
 	"""
