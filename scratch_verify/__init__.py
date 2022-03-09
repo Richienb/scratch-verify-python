@@ -5,18 +5,22 @@ import requests
 
 __all__ = ["create_code", "verify_code"]
 
+
 def create_code() -> str:
-	"""
+    """
 	Generate a verification code for the user to provide at https://scratch.mit.edu/projects/440710593. This is just a convenience method - you can use any numerical code.
 
 	Returns:
 		A 6-digit number.
 	"""
 
-	return "".join(secrets.choice(string.digits) for _ in range(6))
+    return "".join(secrets.choice(string.digits) for _ in range(6))
 
-def verify_code(username: str, code: str, completion_timeout: int = float("inf")) -> bool:
-	"""
+
+def verify_code(username: str,
+                code: str,
+                completion_timeout: int = float("inf")) -> bool:
+    """
 	Verify whether the user is authenticated.
 
 	Arguments:
@@ -28,18 +32,18 @@ def verify_code(username: str, code: str, completion_timeout: int = float("inf")
 		Whether the user has authenticated.
 	"""
 
-	cloud_data = requests.get("https://clouddata.scratch.mit.edu/logs", params={
-		"projectid": 440710593,
-		"limit": 1000,
-		"offset": 0
-	}).json()
+    cloud_data = requests.get("https://clouddata.scratch.mit.edu/logs",
+                              params={
+                                  "projectid": 440710593,
+                                  "limit": 1000,
+                                  "offset": 0
+                              }).json()
 
-	for entry in cloud_data:
-		if (entry["verb"] == "set_var" and
-			entry["name"] == "☁ Verification code" and
-			entry["user"] == username and
-			entry["value"] == code and
-			entry["timestamp"] / 1000 >= now() - completion_timeout):
-				return True
+    for entry in cloud_data:
+        if (entry["verb"] == "set_var"
+                and entry["name"] == "☁ Verification code"
+                and entry["user"] == username and entry["value"] == code
+                and entry["timestamp"] / 1000 >= now() - completion_timeout):
+            return True
 
-	return False
+    return False
