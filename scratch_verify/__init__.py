@@ -6,20 +6,17 @@ import requests
 __all__ = ["create_code", "verify_code"]
 
 def create_code() -> str:
-   """
+	"""
 	Generate a verification code for the user to provide at https://scratch.mit.edu/projects/440710593. This is just a convenience method - you can use any numerical code.
-
 	Returns:
 		A 6-digit number.
 	"""
 
-   return "".join(secrets.choice(string.digits) for _ in range(6))
-
+	return "".join(secrets.choice(string.digits) for _ in range(6))
 
 def verify_code(username: str, code: str, completion_timeout: int = float("inf")) -> bool:
-    """
+	"""
 	Verify whether the user is authenticated.
-
 	Arguments:
 		username: The username to authenticate.
 		code: The code to check for.
