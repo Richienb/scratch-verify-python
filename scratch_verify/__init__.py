@@ -40,4 +40,4 @@ def verify_code(username: str, code: str, completion_timeout: int = float("inf")
                 and entry["timestamp"] / 1000 >= now() - completion_timeout):
             return True
 
-    return False
+	return False
