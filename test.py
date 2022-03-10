@@ -2,7 +2,6 @@ import unittest
 from scratch_verify import create_code
 
 class Test(unittest.TestCase):
-
     def test_create_code(self):
         code = create_code()
 
