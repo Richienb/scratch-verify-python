@@ -35,11 +35,11 @@ def verify_code(username: str, code: str, completion_timeout: int = float("inf")
 	}).json()
 
 	for entry in cloud_data:
-		if (entry["verb"] == "set_var" and
-			entry["name"] == "☁ Verification code" and
-			entry["user"] == username and
-			entry["value"] == code and
-			entry["timestamp"] / 1000 >= now() - completion_timeout):
+		if (entry["verb"] == "set_var"
+			and entry["name"] == "☁ Verification code"
+			and entry["user"] == username
+			and entry["value"] == code
+			and entry["timestamp"] / 1000 >= now() - completion_timeout):
 				return True
 
 	return False
